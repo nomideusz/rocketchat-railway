@@ -1,0 +1,8 @@
+{
+  "name": "Rocket.Chat | Self-Hosted Slack Alternative (MongoDB Replica Set)",
+  "short_name": "Rocket.Chat Workspace",
+  "description": "Rocket.Chat 8.8 team chat with a self-initiating MongoDB replica set",
+  "category": "Other",
+  "image": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/rocket-chat.svg",
+  "card_desc": "Rocket.Chat team chat: channels, DMs, threads, video calls and integrations, with a self-initiating MongoDB replica set and the admin created on first boot."
+}

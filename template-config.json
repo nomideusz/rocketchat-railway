@@ -1,0 +1,135 @@
+{
+  "services": {
+    "7f145f5b-b310-4634-a7a5-3d7a6b55be9c": {
+      "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/rocket-chat.svg",
+      "name": "Rocket.Chat",
+      "build": {},
+      "deploy": {
+        "startCommand": null,
+        "healthcheckPath": "/api/info",
+        "restartPolicyType": "ON_FAILURE",
+        "restartPolicyMaxRetries": 10
+      },
+      "source": {
+        "image": "rocketchat/rocket.chat:8.8.1"
+      },
+      "networking": {
+        "serviceDomains": {
+          "<hasDomain>": {}
+        }
+      },
+      "variables": {
+        "ADMIN_USERNAME": {
+          "defaultValue": "admin",
+          "description": "Admin username, created on first boot",
+          "isOptional": false
+        },
+        "ADMIN_PASS": {
+          "defaultValue": "${{secret(24, \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\")}}",
+          "description": "Admin password, set on first boot only - copy it from here to log in, then change it in Rocket.Chat",
+          "isOptional": false
+        },
+        "ADMIN_EMAIL": {
+          "defaultValue": "",
+          "description": "Admin email (optional) - used for password resets once SMTP is configured",
+          "isOptional": true
+        },
+        "ADMIN_NAME": {
+          "defaultValue": "Administrator",
+          "description": "Admin display name",
+          "isOptional": false
+        },
+        "ROOT_URL": {
+          "defaultValue": "https://${{RAILWAY_PUBLIC_DOMAIN}}",
+          "description": "Public URL of the workspace - set it to your custom domain after adding one",
+          "isOptional": false
+        },
+        "MONGO_URL": {
+          "defaultValue": "mongodb://${{MongoDB.MONGO_INITDB_ROOT_USERNAME}}:${{MongoDB.MONGO_INITDB_ROOT_PASSWORD}}@${{MongoDB.RAILWAY_PRIVATE_DOMAIN}}:27017/rocketchat?authSource=admin&directConnection=true",
+          "description": "MongoDB replica set on the private network (directConnection: single-node set)",
+          "isOptional": false
+        },
+        "PORT": {
+          "defaultValue": "3000",
+          "description": "Port Rocket.Chat listens on - leave as is",
+          "isOptional": false
+        },
+        "BIND_IP": {
+          "defaultValue": "::",
+          "description": "Listen on IPv6 and IPv4 - Railway private networking is IPv6",
+          "isOptional": false
+        },
+        "OVERWRITE_SETTING_Show_Setup_Wizard": {
+          "defaultValue": "completed",
+          "description": "Skips the setup wizard so the admin above can log in straight away",
+          "isOptional": false
+        },
+        "DEPLOY_METHOD": {
+          "defaultValue": "docker",
+          "description": "Reported in Rocket.Chat statistics",
+          "isOptional": false
+        },
+        "DEPLOY_PLATFORM": {
+          "defaultValue": "railway",
+          "description": "Reported in Rocket.Chat statistics",
+          "isOptional": false
+        },
+        "REG_TOKEN": {
+          "defaultValue": "",
+          "description": "Optional Rocket.Chat Cloud registration token (push notifications, marketplace apps)",
+          "isOptional": true
+        },
+        "RAILWAY_HEALTHCHECK_TIMEOUT_SEC": {
+          "defaultValue": "600",
+          "description": "First boot creates the database before the health check can pass",
+          "isOptional": false
+        }
+      }
+    },
+    "9b7f2406-c36b-4844-bf31-17be4a8e82ff": {
+      "icon": "https://devicons.railway.app/i/mongodb.svg",
+      "name": "MongoDB",
+      "build": {},
+      "deploy": {
+        "startCommand": null,
+        "healthcheckPath": null,
+        "restartPolicyType": "ON_FAILURE",
+        "restartPolicyMaxRetries": 10
+      },
+      "source": {
+        "repo": "https://github.com/nomideusz/rocketchat-railway",
+        "rootDirectory": "/mongodb"
+      },
+      "networking": {
+        "serviceDomains": {}
+      },
+      "volumeMounts": {
+        "891465ed-12b7-41a7-a5e6-0cc33ad35822": {
+          "mountPath": "/data/db"
+        }
+      },
+      "variables": {
+        "MONGO_INITDB_ROOT_USERNAME": {
+          "defaultValue": "root",
+          "description": "MongoDB root user, created on first boot",
+          "isOptional": false
+        },
+        "MONGO_INITDB_ROOT_PASSWORD": {
+          "defaultValue": "${{secret(32, \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\")}}",
+          "description": "Auto-generated MongoDB root password - set on first boot, do not change it afterwards",
+          "isOptional": false
+        },
+        "MONGO_REPLICA_SET": {
+          "defaultValue": "rs0",
+          "description": "Replica set name (Rocket.Chat needs a replica set for change streams)",
+          "isOptional": false
+        },
+        "RAILWAY_DEPLOYMENT_DRAINING_SECONDS": {
+          "defaultValue": "60",
+          "description": "Time for MongoDB to shut down cleanly on redeploy",
+          "isOptional": false
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # Deploy and Host Rocket.Chat on Railway
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/rocketchat-workspace?utm_medium=integration&utm_source=button&utm_campaign=rocketchat-workspace)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/rocketchat-workspace?referralCode=sLjDXb&utm_medium=integration&utm_source=button&utm_campaign=rocketchat-workspace)
 
 [Rocket.Chat](https://rocket.chat/) is the open-source team chat platform and self-hosted Slack alternative: public and private channels, direct messages, threads, file sharing, audio and video calls, an omnichannel inbox for customer conversations, and integrations through webhooks, bots and a REST API. This template runs Rocket.Chat 8.8.1 on the official image with MongoDB 8.0 as a replica set that sets itself up, and creates your admin account on first boot, so there is no setup wizard to race through.
 

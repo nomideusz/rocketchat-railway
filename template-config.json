@@ -11,7 +11,7 @@
         "restartPolicyMaxRetries": 10
       },
       "source": {
-        "image": "rocketchat/rocket.chat:8.8.1"
+        "image": "rocketchat/rocket.chat:8.9.0"
       },
       "networking": {
         "serviceDomains": {

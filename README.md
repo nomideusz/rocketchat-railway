@@ -29,7 +29,7 @@ The stack is two services: Rocket.Chat and MongoDB.
 
 - [Rocket.Chat documentation](https://docs.rocket.chat/)
 - [Rocket.Chat environment variables](https://docs.rocket.chat/docs/deployment-environment-variables)
-- [Template source on GitHub](https://github.com/nomideusz/rocketchat-railway)
+- [Template source on GitHub](https://github.com/two-workspaces/rocketchat)
 
 ### Implementation Details
 

@@ -97,7 +97,7 @@
         "restartPolicyMaxRetries": 10
       },
       "source": {
-        "repo": "https://github.com/nomideusz/rocketchat-railway",
+        "repo": "https://github.com/two-workspaces/rocketchat",
         "rootDirectory": "/mongodb"
       },
       "networking": {
